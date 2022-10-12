@@ -1,4 +1,26 @@
 //create function to generate page for html file
+//!doctype
+//create a div which will house all your cards
+//a string literal passing in a function ${buildTeam(team)}
+
+function buildManager(manager){
+  return `<h2>${manager.getName()}</h2>`
+}
+
+function buildEngineer(engineer) {
+  return `<h2>${engineer.getName()}</h2>`;
+}
+
+
+
+//different functions for building cards depending on employee type
+function buildTeam(team){
+  const html = [];
+  html.push(team.filter(employee=>employee.getRole() === "Manager").map(manager=>buildManager(manager)));
+  html.push(team.filter(employee=>employee.getRole() === "Engineer").map(engineer=>buildEngineer(engineer)).join(""));
+  return html.join("");
+};
+
 function generatePage(data){
     return `
     <!DOCTYPE html>
@@ -29,11 +51,7 @@ function generatePage(data){
 
     <main class="container">
       <section class="row">
-        <div class="col-2">
-            <div class="card">  
-        </div>
-        <div class="col-10 d-flex flex-column">
-            <div class="p-2">
+    ${buildTeam(data)}
               
       </section>
     </main>
@@ -42,3 +60,9 @@ function generatePage(data){
 }
 
 module.exports = generatePage;
+
+    // <div class="col-2">
+    //         <div class="card">  
+    //     </div>
+    //     <div class="col-10 d-flex flex-column">
+    //         <div class="p-2"></div>

@@ -2,6 +2,7 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generatePage = require("./src/template.js");
+const path = require("path");
 const Employee = require("./lib/Employee.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
@@ -155,9 +156,8 @@ const addEmployee = () => {
 };
 // create function to write the html file
 // const writeFile
-// create function to initialize the app
 
-// call the function to initialize the app
+// create function to initialize the app
 function init() {
   addManager().then((managerInfo) => {
     console.log(managerInfo);
@@ -168,19 +168,39 @@ function init() {
       managerInfo.officeNumber
     );
     team.push(newEmployee);
-    console.log(team);
     promptEmployee();
   });
 }
 
 function promptEmployee() {
   addEmployee().then((employeeInfo) => {
+    console.log(employeeInfo);
+    if (employeeInfo.role === "Engineer"){
+      const newEmployee = new Engineer(
+        employeeInfo.name,
+        employeeInfo.id,
+        employeeInfo.email,
+        employeeInfo.github
+      );
+      team.push(newEmployee);
+    } else {
+      const newEmployee = new Intern(
+        employeeInfo.name,
+        employeeInfo.id,
+        employeeInfo.email,
+        employeeInfo.school
+      );
+      team.push(newEmployee);
+    }
     if (employeeInfo.confirmAddEmployee) {
       promptEmployee();
+    } else{
+      fs.writeFileSync(path.join(__dirname, "/dist/", "team.html"), generatePage(team));
     }
   });
 }
 
+// call the function to initialize the app
 init();
 // const caitlin = new Employee("caitlin", 15, "coreilly29@gmail.com");
 // console.log(caitlin.name);
