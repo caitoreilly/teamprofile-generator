@@ -1,21 +1,43 @@
-//create function to generate page for html file
-//!doctype
-//create a div which will house all your cards
-//a string literal passing in a function ${buildTeam(team)}
-
+//different functions for building cards depending on employee type
 function buildManager(manager) {
-  return `<h2>${manager.getName()}</h2>`;
+  return `
+  <div class="employee-card">
+    <div class="card-header">
+        <h2 class="card-title">${manager.getName()}</h2>
+        <h3 class="card-title">${manager.getRole()}</h3>
+    </div>
+
+    <div class="card-body">
+        <p>ID: ${manager.getId()}</p>
+        <p>Email: ${manager.getEmail()}</p>
+        <p>Office Number: ${manager.getOfficeNumber()}</p>
+    </div>
+  </div>
+    `;
 }
 
 function buildEngineer(engineer) {
-  return `<h2>${engineer.getName()}</h2>`;
+  return `
+  <div class="employee-card">
+    <div class="card-header">
+        <h2 class="card-title">${engineer.getName()}</h2>
+        <h3 class="card-title">${engineer.getRole()}</h3>
+    </div>
+
+    <div class="card-body">
+        <p>ID: ${engineer.getId()}</p>
+        <p>Email: ${engineer.getEmail()}</p>
+        <p>Office Number: ${engineer.github}</p>
+    </div>
+  </div>
+  `;
 }
 
 function buildIntern(intern) {
   return `<h2>${intern.getName()}</h2>`;
 }
 
-//different functions for building cards depending on employee type
+// function that takes in all of the employees created by the user
 function buildTeam(team) {
   const html = [];
   html.push(
@@ -38,6 +60,9 @@ function buildTeam(team) {
   return html.join("");
 }
 
+//create function to generate page for html file
+//create a div which will house all your cards
+//a string literal passing in a function ${buildTeam(team)}
 function generatePage(data) {
   return `
     <!DOCTYPE html>
@@ -68,8 +93,9 @@ function generatePage(data) {
 
     <main class="container">
       <section class="row">
-    ${buildTeam(data)}
-              
+      <div class="row col-12 d-flex justify-content-center>
+       ${buildTeam(data)}
+      </div>    
       </section>
     </main>
   </body>
@@ -77,9 +103,3 @@ function generatePage(data) {
 }
 
 module.exports = generatePage;
-
-// <div class="col-2">
-//         <div class="card">
-//     </div>
-//     <div class="col-10 d-flex flex-column">
-//         <div class="p-2"></div>
