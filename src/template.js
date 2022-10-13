@@ -1,40 +1,61 @@
 //different functions for building cards depending on employee type
 function buildManager(manager) {
   return `
-  <div class="employee-card">
-    <div class="card-header">
+  <div class="mb-3 col-12 col-md-6 col-lg-4">
+  <div class="employee-card border border-dark">
+    <div class="card-header bg-secondary text-white">
         <h2 class="card-title">${manager.getName()}</h2>
         <h3 class="card-title">${manager.getRole()}</h3>
     </div>
 
     <div class="card-body">
         <p>ID: ${manager.getId()}</p>
-        <p>Email: ${manager.getEmail()}</p>
+        <p>Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></p>
         <p>Office Number: ${manager.getOfficeNumber()}</p>
     </div>
+  </div>
   </div>
     `;
 }
 
 function buildEngineer(engineer) {
   return `
-  <div class="employee-card">
-    <div class="card-header">
+  <div class="mb-3 col-12 col-md-6 col-lg-4">
+  <div class="employee-card border border-dark">
+    <div class="card-header bg-secondary text-white">
         <h2 class="card-title">${engineer.getName()}</h2>
         <h3 class="card-title">${engineer.getRole()}</h3>
     </div>
 
     <div class="card-body">
         <p>ID: ${engineer.getId()}</p>
-        <p>Email: ${engineer.getEmail()}</p>
-        <p>Office Number: ${engineer.github}</p>
+        <p>Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
+        <p>GitHub: <a href="https://github/com/${engineer.github}">${
+    engineer.github
+  }</a></p>
     </div>
+  </div>
   </div>
   `;
 }
 
 function buildIntern(intern) {
-  return `<h2>${intern.getName()}</h2>`;
+  return `
+  <div class="mb-3 col-12 col-md-6 col-lg-4">
+  <div class="employee-card border border-dark">
+    <div class="card-header bg-secondary text-white">
+        <h2 class="card-title">${intern.getName()}</h2>
+        <h3 class="card-title">${intern.getRole()}</h3>
+    </div>
+
+    <div class="card-body">
+        <p>ID: ${intern.getId()}</p>
+        <p>Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></p>
+        <p>School: ${intern.school}</p>
+    </div>
+  </div>
+  </div>
+  `;
 }
 
 // function that takes in all of the employees created by the user
@@ -83,12 +104,12 @@ function generatePage(data) {
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Team Profile Generator</title>
   </head>
   <body>
-    <header class="title-bar">
-      <h1 class="top">Team Profile Generator</h1>
+    <header class="title-bar jumbotron bg-info text-white">
+      <h1 class="top text-center">My Team</h1>
     </header>
 
     <main class="container">
