@@ -4,7 +4,7 @@
 
 ---
 
-This Team Profile Generator is a Node.js command-line application that dynamically generates an HTML file of cards for each employee and the employee's information based on what the user inputs. After a user enters responses for a series of questions about their team, the user can find their generated HTML file in the dist directory. For further information, please visit my GitHub Repository [here]().
+This Team Profile Generator is a Node.js command-line application that dynamically generates an HTML file of cards for each employee and the employee's information based on what the user inputs. After a user enters responses for a series of questions about their team, the user can find their generated HTML file in the dist directory. For further information, please visit my GitHub Repository [here](https://github.com/caitoreilly/teamprofile-generator.git).
 
 ## Table of Contents 
 
