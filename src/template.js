@@ -30,7 +30,7 @@ function buildEngineer(engineer) {
     <div class="card-body">
         <p>ID: ${engineer.getId()}</p>
         <p>Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
-        <p>GitHub: <a href="https://github/com/${engineer.github}">${
+        <p>GitHub: <a href="https://www.github.com/${engineer.github}">${
     engineer.github
   }</a></p>
     </div>
@@ -114,7 +114,6 @@ function generatePage(data) {
 
     <main class="container">
       <section class="row">
-      <div class="row col-12 d-flex justify-content-center>
        ${buildTeam(data)}
       </div>    
       </section>

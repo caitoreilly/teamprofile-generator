@@ -175,7 +175,7 @@ function init() {
 function promptEmployee() {
   addEmployee().then((employeeInfo) => {
     console.log(employeeInfo);
-    if (employeeInfo.role === "Engineer"){
+    if (employeeInfo.role === "Engineer") {
       const newEmployee = new Engineer(
         employeeInfo.name,
         employeeInfo.id,
@@ -194,9 +194,15 @@ function promptEmployee() {
     }
     if (employeeInfo.confirmAddEmployee) {
       promptEmployee();
-    } else{
-      fs.writeFileSync(path.join(__dirname, "/dist/", "team.html"), generatePage(team));
+    } else {
+      fs.writeFileSync(
+        path.join(__dirname, "/dist/", "team.html"),
+        generatePage(team)
+      );
     }
+    console.log(
+      "Success! You will find your team profile file in the dist folder."
+    );
   });
 }
 
